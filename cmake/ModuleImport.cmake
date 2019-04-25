@@ -38,7 +38,7 @@ macro(ModuleImport2 ModuleName ModulePath)
 
         LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/${ModulePath}/lib)
     ELSE(WIN32)
-        INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/Find${ModuleName}.cmake)
+        INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/${ModulePath}/cmake/Find${ModuleName}.cmake)
         INCLUDE_DIRECTORIES(${${ModuleName}_INCLUDE_DIRS})
     ENDIF(WIN32)
 endmacro(ModuleImport2)
