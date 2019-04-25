@@ -32,6 +32,14 @@ macro(ModuleImport ModuleName ModulePath)
 endmacro(ModuleImport)
 
 macro(ModuleImport2 ModuleName ModulePath)
+
+    MESSAGE(STATUS ${ModuleName})
+    MESSAGE(STATUS ${ModulePath})
+
+    LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/bin)
+    SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
+    SET(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
+
     IF (WIN32)
         INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/${ModulePath}/include/${ModuleName})
         INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/${ModulePath}/include)
@@ -41,4 +49,6 @@ macro(ModuleImport2 ModuleName ModulePath)
         INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/${ModulePath}/cmake/Find${ModuleName}.cmake)
         INCLUDE_DIRECTORIES(${${ModuleName}_INCLUDE_DIRS})
     ENDIF(WIN32)
+
+    
 endmacro(ModuleImport2)
