@@ -15,7 +15,7 @@ MESSAGE(STATUS "VERSION: ${LUAMYSQL_VERSION}")
 
 ADD_DEFINITIONS(-DUSE_LUAMYSQL)
 
-#ModuleImport("dmlog" "thirdparty/dmlog")
+ModuleImport2("mysql" "thirdparty/mysql")
 
 IF (WIN32)
     INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/windows)
@@ -75,7 +75,10 @@ IF (WIN32)
     ADD_LIBRARY(lua53 SHARED ${DMLUA_SOURCES})
 
     ADD_LIBRARY(luamysql SHARED ${LUAMYSQL_SOURCES} ${CMAKE_CURRENT_SOURCE_DIR}/src/luamysql/luamysql_module.def)
-    TARGET_LINK_LIBRARIES(luamysql lua53)
+
+    MESSAGE(STATUS "MYSQL_LIBRARIES: ${MYSQL_LIBRARIES}")
+
+    TARGET_LINK_LIBRARIES(luamysql lua53 ${MYSQL_LIBRARIES})
 
     ADD_EXECUTABLE(lua ${LUA_SOURCES})
     TARGET_LINK_LIBRARIES(lua lua53)
