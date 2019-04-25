@@ -1,0 +1,3 @@
+EXPORTS 
+    luaopen_luamysql
+    require_luamysql
