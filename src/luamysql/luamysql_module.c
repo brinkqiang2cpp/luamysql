@@ -30,7 +30,11 @@
 #include <WinSock2.h>
 #endif
 
+#ifdef _WIN32
 #include <mysql.h>
+#else
+#include <mysql/mysql.h>
+#endif
 
 #define LUAMYSQL_CONN       "Connection*"
 #define LUAMYSQL_CURSOR     "Cursor*"
