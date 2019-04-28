@@ -32,3 +32,4 @@ luamysql
 [![Join the chat](https://badges.gitter.im/brinkqiang/luamysql/Lobby.svg)](https://gitter.im/brinkqiang/luamysql)
 
 ## Thanks
+ichenq@gmail.com
