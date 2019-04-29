@@ -48,7 +48,5 @@ macro(ModuleImport2 ModuleName ModulePath)
     ELSE(WIN32)
         INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/${ModulePath}/cmake/Find${ModuleName}.cmake)
         INCLUDE_DIRECTORIES(${${ModuleName}_INCLUDE_DIRS})
-    ENDIF(WIN32)
-
-    
+    ENDIF(WIN32)   
 endmacro(ModuleImport2)
