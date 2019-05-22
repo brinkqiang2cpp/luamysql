@@ -213,8 +213,7 @@
 
 #define LUA_CPATH_DEFAULT                                       \
     LUA_CDIR "?.so;" LUA_CDIR "lib?.so;" LUA_CDIR "loadall.so;" \
-             "./?.so;"                                          \
-             "./lib?.so"
+             "./?.so;" "./lib?.so"
 #endif          /* } */
 
 
