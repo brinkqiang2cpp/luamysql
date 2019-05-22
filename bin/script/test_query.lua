@@ -4,7 +4,7 @@ local conf =
 {
     host = 'localhost',
     user = 'root',
-    passwd = 'holyshit',
+    passwd = '91idol.com',
     db = 'world',
 }
 
