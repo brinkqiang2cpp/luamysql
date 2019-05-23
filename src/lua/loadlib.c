@@ -501,7 +501,7 @@ static const char* searchpath( lua_State* L, const char* name,
                                const char* dirsep ) {
     luaL_Buffer msg;  /* to build error message */
     luaL_buffinit( L, &msg );
-
+    char libname[MAX_PATH] = {0};
     if ( *sep != '\0' ) { /* non-empty separator? */
         name = luaL_gsub( L, name, sep, dirsep );    /* replace it by 'dirsep' */
     }
@@ -519,6 +519,30 @@ static const char* searchpath( lua_State* L, const char* name,
         lua_remove( L, -2 ); /* remove file name */
         luaL_addvalue( &msg ); /* concatenate error msg. entry */
     }
+
+#ifndef WIN32
+    if ( *sep != '\0' ) { /* non-empty separator? */
+        name = luaL_gsub( L, name, sep, dirsep );    /* replace it by 'dirsep' */
+        strcpy(libname, "lib");
+        strcat(libname, name);
+    }
+
+    while ( ( path = pushnexttemplate( L, path ) ) != NULL ) {
+        const char* filename = luaL_gsub( L, lua_tostring( L, -1 ),
+                                          LUA_PATH_MARK, libname );
+        lua_remove( L, -2 ); /* remove path template */
+
+        if ( readable( filename ) ) { /* does file exist and is readable? */
+            return filename;    /* return that file name */
+        }
+
+        lua_pushfstring( L, "\n\tno file '%s'", filename );
+        lua_remove( L, -2 ); /* remove file name */
+        luaL_addvalue( &msg ); /* concatenate error msg. entry */
+    }
+
+#endif
+
 
     luaL_pushresult( &msg ); /* create error message */
     return NULL;  /* not found */
