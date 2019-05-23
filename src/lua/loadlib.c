@@ -525,6 +525,7 @@ static const char* searchpath( lua_State* L, const char* name,
         name = luaL_gsub( L, name, sep, dirsep );    /* replace it by 'dirsep' */
         strcpy(libname, "lib");
         strcat(libname, name);
+        printf("lib: %s", libname);
     }
 
     while ( ( path = pushnexttemplate( L, path ) ) != NULL ) {
