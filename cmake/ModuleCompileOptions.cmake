@@ -54,7 +54,7 @@ macro(ModuleSetCompileOptions)
 
     SET(DMOS_NAME "lin")
 
-    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread -fPIC -Wl,-undefined,dynamic_lookup" )
+    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pthread -fPIC" )
     SET(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Og -g -D_DEBUG")
     SET(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3 -g")
     SET(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL} -O3 -g")
