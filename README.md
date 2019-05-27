@@ -24,9 +24,24 @@ Copyright (c) 2013-2018 brinkqiang (brink.qiang@gmail.com)
 ## env
 install cmake
 
+
 ## Intro
 luamysql
-```cpp
+
+win
+```lua
+cd bin/debug
+mysql -uroot -p123456 < ../script/createdb.sql
+lua ../script/test_insert.lua
+lua ../script/test_query.lua
+```
+
+linux
+```lua
+cd bin
+mysql -uroot -p123456 < script/createdb.sql
+lua script/test_insert.lua
+lua script/test_query.lua
 ```
 ## Contacts
 [![Join the chat](https://badges.gitter.im/brinkqiang/luamysql/Lobby.svg)](https://gitter.im/brinkqiang/luamysql)
