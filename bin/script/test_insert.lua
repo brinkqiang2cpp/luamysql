@@ -17,6 +17,7 @@ local stmt = [[CREATE TABLE IF NOT EXISTS `mytest`(
 local client = mysql.createClient()
 client:connect(conf)
 local r = client:execute(stmt)
+r = client:execute('delete from mytest')
 
 local total = 10000
 for n=1, total do
