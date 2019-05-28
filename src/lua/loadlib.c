@@ -501,6 +501,7 @@ static const char* searchpath( lua_State* L, const char* name,
                                const char* dirsep ) {
     luaL_Buffer msg;  /* to build error message */
     luaL_buffinit( L, &msg );
+
     if ( *sep != '\0' ) { /* non-empty separator? */
         name = luaL_gsub( L, name, sep, dirsep );    /* replace it by 'dirsep' */
     }
