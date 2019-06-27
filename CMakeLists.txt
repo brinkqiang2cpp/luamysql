@@ -16,7 +16,7 @@ MESSAGE(STATUS "VERSION: ${LUAMYSQL_VERSION}")
 ADD_DEFINITIONS(-DUSE_LUAMYSQL)
 
 ModuleImport2("mysql" "thirdparty/mysql")
-
+ModuleImport("dmlibgo" "thirdparty/dmlibgo")
 IF (WIN32)
     INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/src/windows)
 ENDIF(WIN32)
